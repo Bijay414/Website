@@ -255,57 +255,93 @@ body::before {
     transition: width 1.5s ease-in-out;
 }
 
-/* Projects */
+/* Enhanced Projects */
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .project-card {
-    background: var(--secondary);
-    border-radius: 8px;
+    background: rgba(30, 58, 138, 0.4);
+    border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.3);
 }
 
 .project-preview {
-    height: 150px;
-    background: var(--accent);
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
-    color: var(--light);
+    font-size: 4rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.project-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-preview::before {
+    opacity: 1;
+}
+
+.project-preview i {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.project-card:hover .project-preview i {
+    transform: scale(1.1) rotate(5deg);
+    animation: none;
 }
 
 .project-details {
-    padding: 1rem;
+    padding: 1.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
 }
 
 .project-details h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
 }
 
 .project-details p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 1rem;
-}
-
-.project-details a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.project-details a:hover {
-    color: var(--accent);
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    color: var(--light);
 }
 
 /* Contact */
@@ -409,20 +445,15 @@ body::before {
     .contact-grid {
         grid-template-columns: 1fr;
     }
-}
-/* Add these styles to your existing CSS file */
-
-/* Enhanced particle animations */
-.particle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 215, 0, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-    animation: float 10s infinite ease-in-out;
-    box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.3);
+    
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-preview {
+        height: 180px;
+        font-size: 3.5rem;
+    }
 }
 
 @keyframes float {
@@ -592,7 +623,7 @@ body::after {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}/* Add these professional effects to your existing styles.css file */
+}
 
 /* Scroll progress indicator */
 .scroll-progress {
@@ -736,11 +767,16 @@ body::after {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: rgba(255, 215, 0, 0.1);
 }
 
 .project-link:hover {
-    color: var(--accent);
+    color: var(--light);
     gap: 0.75rem;
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateX(5px);
 }
 
 .fa-arrow-right {

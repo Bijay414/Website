@@ -51,8 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const projects = [
-        { icon: 'fas fa-book', title: 'C-Project', desc: 'Efficient book tracking system.', link: 'https://github.com/Bijay414/C-Programming_Project.git' },
-        { icon: 'fas fa-question-circle', title: 'OOP-Project', desc: 'Interactive educational platform.', link: 'https://github.com/Bijay414/OOP-Project_using-CPP.git' },
+        { 
+            icon: 'fas fa-book-open', 
+            title: 'C-Project', 
+            desc: 'Efficient book tracking system built with C programming.', 
+            link: 'https://github.com/Bijay414/C-Programming_Project.git',
+            gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: '#667eea'
+        },
+        { 
+            icon: 'fas fa-graduation-cap', 
+            title: 'OOP-Project', 
+            desc: 'Interactive educational quiz platform using C++ OOP principles.', 
+            link: 'https://github.com/Bijay414/OOP-Project_using-CPP.git',
+            gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            color: '#f093fb'
+        },
 
     ];
 
@@ -112,12 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', animateProgressBars);
     window.addEventListener('load', animateProgressBars);
 
-    // Populate Projects with animation
+    // Populate Projects with enhanced styling
     const projectsContainer = document.querySelector('.projects-container');
     projects.forEach(project => {
         projectsContainer.innerHTML += `
             <div class="project-card">
-                <div class="project-preview"><i class="${project.icon}"></i></div>
+                <div class="project-preview" style="background: ${project.gradient}">
+                    <i class="${project.icon}"></i>
+                </div>
                 <div class="project-details">
                     <h3>${project.title}</h3>
                     <p>${project.desc}</p>
@@ -205,49 +221,31 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Prepare template parameters - make sure these match your EmailJS template variables
+        // Prepare template parameters
         const templateParams = {
             from_name: name,
             from_email: email,
             subject: subject,
             message: message,
-            to_email: 'kurmibijay4484@gmail.com'  // Add recipient email to template
+            to_name: 'Bijay Kurmi'
         };
 
-        // Debug message
-        console.log("Attempting to send email with EmailJS...");
-        console.log("Service ID:", serviceID);
-        console.log("Template ID:", templateID);
-
-        // Send email using EmailJS with improved error handling
+        // Send email using EmailJS
         emailjs.send(serviceID, templateID, templateParams)
-            .then((response) => {
-                console.log('EmailJS Success:', response.status, response.text);
-                showFormMessage('Message sent successfully! Thank you for contacting me.', 'success');
+            .then(() => {
+                showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
                 contactForm.reset();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             })
             .catch((error) => {
                 console.error('EmailJS Error:', error);
-                // More detailed error message
-                if (error.status === 0) {
-                    showFormMessage('Network error. Please check your internet connection and try again.', 'error');
-                } else if (error.status === 403) {
-                    showFormMessage('Authorization error. This domain may not be authorized to use EmailJS.', 'error');
-                } else if (error.status >= 400 && error.status < 500) {
-                    showFormMessage(`Request error (${error.status}): ${error.text || 'Please check your form data and try again.'}`, 'error');
-                } else if (error.status >= 500) {
-                    showFormMessage('Server error. Please try again later or contact directly at kurmibijay4484@gmail.com', 'error');
-                } else {
-                    showFormMessage('Failed to send message. Please try again or contact directly at kurmibijay4484@gmail.com', 'error');
-                }
-            })
-            .finally(() => {
+                showFormMessage('Failed to send message. Please try again or contact me directly.', 'error');
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
             });
     });
 
-    // Helper function to show form messages
     function showFormMessage(text, type) {
         formStatus.className = `message ${type}-message`;
         formStatus.innerHTML = `<i class="${type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle'}"></i> ${text}`;
