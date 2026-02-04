@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bijay Kurmi | Backend Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .landing-content {
+            position: relative;
+            text-align: center;
+        }
+        .landing-content img {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="#landing" class="nav-logo">Bijay Kurmi</a>
+            <ul class="nav-menu">
+                <li><a href="#landing" class="nav-item">Home</a></li>
+                <li><a href="#profile" class="nav-item">Profile</a></li>
+                <li><a href="#skills" class="nav-item">Skills</a></li>
+                <li><a href="#projects" class="nav-item">Projects</a></li>
+                <li><a href="#contact" class="nav-item">Contact</a></li>
+            </ul>
+            <button class="nav-hamburger"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Landing Section -->
+    <section id="landing" class="landing">
+        <div class="container">
+            <div class="landing-content">
+                <img src="a.png" alt="Bijay Kurmi">
+                <h1 class="landing-title">Bijay Kurmi</h1>
+                <p class="landing-subtitle">Backend Specialist | Electronics Engineer</p>
+                <div class="landing-cta">
+                    <a href="#projects" class="cta-btn">View Projects</a>
+                    <a href="#contact" class="cta-btn cta-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile section">
+        <div class="container">
+            <h2 class="section-title">Profile</h2>
+            <div class="profile-text">
+                <p>A dedicated backend developer and electronics engineering student at Kantipur Engineering College, Nepal. I specialize in building robust, scalable systems with C, C++, Python, and MySQL, driven by a passion for precision and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-info"></div>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" name="name" placeholder="Name" class="input-field" required>
+                    <input type="email" name="email" placeholder="Email" class="input-field" required>
+                    <input type="text" name="subject" placeholder="Subject" class="input-field" required>
+                    <textarea name="message" placeholder="Message" class="input-field" required></textarea>
+                    <button type="submit" class="cta-btn">Submit</button>
+                    <div id="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links"></div>
+            <p>© 2025 Bijay Kurmi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
